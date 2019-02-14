@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h1>ajsfjajs</h1>
         <b-navbar toggleable="md" type="dark" class="sticky-top mb-4" id="navigationBar">
             <b-container>
                 <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
