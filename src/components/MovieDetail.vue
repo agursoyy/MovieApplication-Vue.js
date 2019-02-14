@@ -100,7 +100,6 @@ export default {
 .modal-container {
   position: relative;
   margin-top:45px;
-  padding: 30px 35px;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
