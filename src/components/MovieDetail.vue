@@ -12,6 +12,8 @@
                   (<span v-for="(item,index) in movie.genres" :key="item.id" class="genre">{{item.name}}<span v-if="index != movie.genres.length-1">, </span></span>)
                 </div>
                 <div class="movie-overview">
+                  İkinci Dünya Savaşı. t-34'ün komutanı olan ikinci teğmen Nikolai ivushkin, Moskova yakınlarındaki bir savaşta tank asansörü Klaus Jager'a karşı eşit olmayan bir savaşta bulunuyor. Onun görevi bir intihardan öte - bir düzine Alman tankını, tek başlarına yok etmek. dedi ki, şans cesurca yapar. Savaşı kazanır, zar zor hayatta kalır, ama hayatını üç yıl boyunca esaret altında kaybeder ... 1944 baharında, Wehrmacht, Jager'e ohrdruf yeniden görevini üstlenmesini ve en son t-34'ü çalışan bir hedef olarak kullanarak elit Alman zırhlı kuvvetleri için bir eğitim merkezine dönüştürmesini emreder. Bu Jager ve yine ivushkin çapraz yolları. Efsanevi bir tankın komutanı olmak için jager veya ers ivushkin. Bununla birlikte, ivushkin cesur ve dikkatli planlanmış bir kaçış için egzersizleri kullandığında hiçbir şey plan yapmaya gitmez.
+                  İkinci Dünya Savaşı. t-34'ün komutanı olan ikinci teğmen Nikolai ivushkin, Moskova yakınlarındaki bir savaşta tank asansörü Klaus Jager'a karşı eşit olmayan bir savaşta bulunuyor. Onun görevi bir intihardan öte - bir düzine Alman tankını, tek başlarına yok etmek. dedi ki, şans cesurca yapar. Savaşı kazanır, zar zor hayatta kalır, ama hayatını üç yıl boyunca esaret altında kaybeder ... 1944 baharında, Wehrmacht, Jager'e ohrdruf yeniden görevini üstlenmesini ve en son t-34'ü çalışan bir hedef olarak kullanarak elit Alman zırhlı kuvvetleri için bir eğitim merkezine dönüştürmesini emreder. Bu Jager ve yine ivushkin çapraz yolları. Efsanevi bir tankın komutanı olmak için jager veya ers ivushkin. Bununla birlikte, ivushkin cesur ve dikkatli planlanmış bir kaçış için egzersizleri kullandığında hiçbir şey plan yapmaya gitmez.
                   {{movie.overview}}
                 </div>           
               </div>
@@ -99,7 +101,7 @@ export default {
 
 .modal-container {
   position: relative;
-  margin-top:45px;
+  margin-top:55px;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
@@ -120,8 +122,15 @@ export default {
 #text-content {
   background-color: black;
   padding: 30px 25px;
+  height: 450px;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
 }
-
+#text-content::-webkit-scrollbar { 
+  width: 0;
+  height: 0;
+}
 .movie-title {
   font-weight: 750;
     font-size: 25px;
@@ -149,29 +158,28 @@ export default {
     
      .movie-title {
       font-weight: 750;
-      font-size: 16.5px;
+      font-size: 18px;
     }
    .genre {
-      font-weight: 650;
-      font-size:14px;
+      font-weight: 700;
+      font-size:15px;
     }
 
     .movie-overview {
-      font-size: 12.5px;
+      font-size: 13px;
    }
    .modal-container {
-     padding: 25px 20px;
-     margin-top: -10px;   
+     padding: 22px;
    }
    #closeIcon {
-     font-size: 25px;
+     font-size: 22px;
      font-weight: 900;
    }
    #text-content {
-     padding: 10px;
+     padding: 20px;
    }
    .movie-overview {
-     margin-top: 10px;
+     margin-top: 15px;
    }
   }
 /*
