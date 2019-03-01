@@ -1,6 +1,5 @@
 <template>
           <div id="movieEntry">
-              {{backRoute}}
                 <figure class="border-bottom border-right" >
                     <div style="display:flex;">
                         <div class="imgContainer"><img :src="posterUrl" id="posterImage" alt="Poster" @click="open()"/></div>
@@ -60,7 +59,7 @@ export default {
         }
       },
         fetchOverview () {
-          this.movieOverview = this.movie.overview.substring(0,211)
+          this.movieOverview = this.movie.overview.substring(0,200)
    }
   },
   created () {
@@ -105,8 +104,11 @@ export default {
 }
 
 @media only screen and (max-width: 575px) {
+    #movieEntry {
+        padding: 0 12px;
+    }
     #posterImage {
-        width:100%;
+        width: 100%;
         height: 350px;
     }
     .title {

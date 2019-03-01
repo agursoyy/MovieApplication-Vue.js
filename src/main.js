@@ -4,17 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import BootstrapVue from 'bootstrap-vue'
 import router from './router'
+import store from './Store'
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap'
 import 'font-awesome-4.7.0/css/font-awesome.css'
+
+Vue.use(BootstrapVue)
 
 var VueScrollTo = require('vue-scrollto')
 
 Vue.config.productionTip = false
-Vue.use(BootstrapVue)
 Vue.use(VueScrollTo, {
   container: 'body',
-  duration: 1100,
+  duration: 1000,
   easing: 'ease',
   offset: 0,
   force: true,
@@ -29,6 +33,7 @@ Vue.use(VueScrollTo, {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

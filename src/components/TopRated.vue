@@ -1,14 +1,8 @@
-<template>
-  <div v-cloak>
+<template v-cloak>
+  <div>
   <!-- use the modal component, pass in the prop -->
   <!-- use the modal component, pass in the prop -->
-  <movie-detail v-if="showModal" :id="Vmodal.id" @close="showModal = false">
-    <!--
-      you can use custom content here to overwrite
-      default content
-    -->
-    <h3 slot="header">custom header</h3>
-  </movie-detail>
+  <movie-detail v-if="showModal" :id="Vmodal.id" @close="showModal = false"></movie-detail>
     <transition name="slide">
       <router-view/>
     </transition>
@@ -17,20 +11,21 @@
          <b-row  >
                 <b-col lg="6" class="mb-3" v-for="entry in topRated.results" :key="entry.id">
                      <div >
-                      <movie-entry :movie="entry" @openModal="viewModal($event)"></movie-entry>
+                      <MovieEntry :movie="entry" @openModal="viewModal($event)"/>
                     </div>
                 </b-col>
           </b-row>
-          <pagination v-model="currentPage" :records="totalRecords" :per-page="recordPerPage" @paginate="myCallback" v-scroll-to="'.pageHeader'"></pagination>
+          <Pagination class="pagination" v-model="currentPage" :records="topRated.total" :per-page="topRated.pageSize" @paginate="myCallback" v-scroll-to="'.pageHeader'"/>
     </b-container>
+
   </div>
 </template>
 <script>
 
 import MovieEntry from './MovieEntry'
-import axios from 'axios'
 import Pagination from 'vue-pagination-2'
 import MovieDetail from './MovieDetail'
+import {mapState, mapActions} from 'vuex'
 
 export default {
   props: {
@@ -42,54 +37,38 @@ export default {
   data () {
     return {
       currentPage: 1,
-      totalRecords: 1,
-      recordPerPage: 20,
-      topRated: {},
       showModal: false,
       Vmodal: {
         id: null,     
       }
     }
   },
+  computed: {
+    ...mapState(['topRated'])
+  },
   methods: {
-
+    ...mapActions(['getTopRatedData']),
     viewModal (param) {
       this.Vmodal.id = param
       this.showModal = true
     },
-    getTotalRecord () {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=f9261403d3de49a0151e3debf139d4b6&language=tr&page=1')
-      .then(response => {
-        this.totalRecords = parseInt(response.data.total_results)
-      })
-    },
-    getPageData (page) {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=f9261403d3de49a0151e3debf139d4b6&language=tr&page='+page)
-      .then(response => {
-        this.topRated = response.data
-      })
-    },
     myCallback () {
       this.$router.push({ name: 'TopRated', params: {page: this.currentPage}})
-      this.getPageData(this.currentPage)
     },
     fetchPagination () {
-      this.currentPage = parseInt(this.page)
+      this.currentPage = Number(this.page)
     },
-    ifNavigated () {
+    setData () {
       this.fetchPagination()
-      this.getPageData(this.page)
+      this.getTopRatedData(this.currentPage)
     }
-
   },
   created () {
-    this.fetchPagination()
-    this.getTotalRecord()
-    this.getPageData(this.currentPage)
+    this.setData()
   },
   watch: {
     '$route' (to, from) {
-      this.ifNavigated()
+      this.setData()
     }
   },
   components: {
@@ -101,7 +80,6 @@ export default {
 </script>
 
 <style>
-.slide-enter,
 .slide-leave-to {
     opacity: 0;
     transform: translate3d(0,-100%,0);

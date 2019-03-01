@@ -13,10 +13,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4",
+    "jquery": "^3.3.1",
     "serve-static": "^1.13.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue-scrollto": "^2.13.0"
+    "vue-scrollto": "^2.13.0",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

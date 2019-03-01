@@ -1,5 +1,5 @@
-<template>
-  <div v-cloak>
+<template v-cloak>
+  <div>
   <!-- use the modal component, pass in the prop -->
   <!-- use the modal component, pass in the prop -->
   <movie-detail v-if="showModal" :id="Vmodal.id" @close="showModal = false"></movie-detail>
@@ -15,7 +15,7 @@
                     </div>
                 </b-col>
           </b-row>
-          <Pagination class="pagination" v-model="currentPage" :records="totalRecords" :per-page="recordPerPage" @paginate="myCallback" v-scroll-to="'.pageHeader'"/>
+          <Pagination class="pagination" v-model="currentPage" :records="popular.total" :per-page="popular.pageSize" @paginate="myCallback" v-scroll-to="'.pageHeader'"/>
     </b-container>
 
   </div>
@@ -23,9 +23,9 @@
 <script>
 
 import MovieEntry from './MovieEntry'
-import axios from 'axios'
 import Pagination from 'vue-pagination-2'
 import MovieDetail from './MovieDetail'
+import {mapState, mapActions} from 'vuex'
 
 export default {
   props: {
@@ -37,52 +37,38 @@ export default {
   data () {
     return {
       currentPage: 1,
-      totalRecords: 1,
-      recordPerPage: 20,
-      popular: {},
       showModal: false,
       Vmodal: {
         id: null,     
       }
     }
   },
+  computed: {
+    ...mapState(['popular'])
+  },
   methods: {
+    ...mapActions(['getPopularData']),
     viewModal (param) {
       this.Vmodal.id = param
       this.showModal = true
     },
-    getTotalRecord () {
-      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=f9261403d3de49a0151e3debf139d4b6&language=tr&page=1')
-      .then(response => {
-        this.totalRecords = parseInt(response.data.total_results)
-      })
-    },
-    getPageData (page) {
-      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=f9261403d3de49a0151e3debf139d4b6&language=tr&page='+page)
-      .then(response => {
-        this.popular = response.data
-      })
-    },
     myCallback () {
       this.$router.push({ name: 'Popular', params: {page: this.currentPage}})
-      this.getPageData(this.currentPage)
     },
     fetchPagination () {
-      this.currentPage = parseInt(this.page)
+      this.currentPage = Number(this.page)
     },
-    ifNavigated () {
+    setData () {
       this.fetchPagination()
-      this.getPageData(this.page)
+      this.getPopularData(this.currentPage)
     }
   },
   created () {
-    this.fetchPagination()
-    this.getTotalRecord()
-    this.getPageData(this.currentPage)
+    this.setData()
   },
   watch: {
     '$route' (to, from) {
-      this.ifNavigated()
+      this.setData()
     }
   },
   components: {
@@ -94,6 +80,9 @@ export default {
 </script>
 
 <style>
+[v-cloak] {
+    display: none;
+  }
 .slide-leave-to {
     opacity: 0;
     transform: translate3d(0,-100%,0);

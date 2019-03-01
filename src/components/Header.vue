@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="md" type="dark" class="sticky-top mb-4" id="navigationBar">
+        <b-navbar toggleable="md" type="dark" class="sticky-top" id="navigationBar">
             <b-container>
                 <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
                 <router-link :to="{ name: 'Home' }" class="navbar-brand" target="_self">MYMOVIE</router-link>
