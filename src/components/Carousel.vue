@@ -80,24 +80,24 @@ html {
     overflow-x: hidden;
 }
 .carouselImg {
-    height: 550px;
+    height: 480px;
 }
 .biggerImg {
-  height: 275px;
+  height: 240px;
 }
 .smallerImg {
-  height: 137.5px;
+  height: 120px;
 }
 
  @media only screen and (max-width: 991px) {
      .carouselImg{
-       height: 420px;
+       height: 395px;
     }
     .biggerImg {
-      height: 210px;
+      height: 192.5px;
     }
     .smallerImg {
-      height: 105px;
+      height: 95px;
     }
   }
 </style>

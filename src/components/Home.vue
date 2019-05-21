@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0" id="carousel-container" v-bind:style="[{'background-image': 'url(' + carouselBg + ')' }]">
     <div class="container">
-      <Carousel class="pt-5"/>
+      <Carousel/>
     </div>
 
 </div>
@@ -35,12 +35,15 @@ export default {
   background-repeat: none;
    position: relative;
   min-height: calc(100vh - 80px);
+   display: flex;
+  align-items: center;
 }
 
 
 @media only screen and (max-width: 991px) {
  #carousel-container {
-     height: auto;
+     min-height: calc(100vh - 56px);
+
   }
 
 }
