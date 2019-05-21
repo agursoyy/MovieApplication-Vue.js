@@ -11,7 +11,7 @@ const nowPlayingURL = `${baseURL}/now_playing?${apiKey}&${language}`
 const topRatedURL = `${baseURL}/top_rated?${apiKey}&${language}`
 const upcomingURL = `${baseURL}/upcoming?${apiKey}&${language}`
 const genreURL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=f9261403d3de49a0151e3debf139d4b6&language=tr'
-const imageURL = 'https://image.tmdb.org/t/p/w500'
+const imageURL = 'https://image.tmdb.org/t/p/original'
 
 export default new Vuex.Store({
   state: {
@@ -74,6 +74,7 @@ export default new Vuex.Store({
       }
     },
     async setCarouselData (state) {
+      state.carousel.length = 0
       for (let i = 0; i < 16; i = i + 5) {
         let carouselObject = {
           movie1: state.nowPlaying.results[i],
@@ -86,7 +87,14 @@ export default new Vuex.Store({
       }
     },
     async setGenresData (state, data) {
-      state.genres = data.genres
+      state.genres.length = 0
+      for (let i=0; i<=6; i=i+2) {
+        let genreObject  = {
+          genre1: data.genres[i],
+          genre2: data.genres[i+1]
+        }
+        state.genres.push(genreObject)
+      }
     }
   },
   actions: { // fetch API DATA.

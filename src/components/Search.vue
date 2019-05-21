@@ -1,5 +1,5 @@
 <template>
-  <div v-cloak>
+  <div v-cloak class="backgroundStyle" v-bind:style="[{'background-image': 'url(' + background + ')' }]">
   <!-- use the modal component, pass in the prop -->
   <!-- use the modal component, pass in the prop -->
   <movie-detail v-if="showModal" :id="Vmodal.id" @close="showModal = false">
@@ -51,6 +51,11 @@ export default {
       Vmodal: {
         id: null,     
       }
+    }
+  },
+  computed: {
+    background: function () {
+         return require('@/assets/movieBackground.jpg')
     }
   },
   methods: {
@@ -121,15 +126,5 @@ export default {
     transition: all 0.2s ease-in;
 }
 
-.pagination > li > a
-{
-    color: #000000;
-}
-.page-item.active .page-link {
-  z-index: 1;
-  color: #fff; 
-  background-color: #000000;
- 
-}
 
 </style>

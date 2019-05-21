@@ -1,7 +1,7 @@
 <template>
   <div id="app">
      <span class="scroll"></span>
-     <Header class="sticky-top mb-4"/>
+     <Header class="sticky-top"/>
 <!-- navbar-1.vue -->
     <router-view/>
   </div>
@@ -28,8 +28,23 @@ export default {
 }
 
 .pageHeader {
-  margin-top: 22px;
+  padding-top: 22px;
   font-family: "Arial Black", Gadget, sans-serif;
   font-weight:700;
+}
+.backgroundStyle {
+  background-repeat: none;
+  background-size: cover;
+  min-height: 768px;
+}
+.pagination > li > a
+{
+    color: #000000;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff; 
+  background-color: #000000;
+ 
 }
 </style>

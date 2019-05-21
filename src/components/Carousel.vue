@@ -1,8 +1,8 @@
 <template>
-       <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carousel-example-1z" class="carousel slide carousel-fade m-0" data-ride="carousel">
   <!--Indicators-->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="0" class="active "></li>
     <li data-target="#carousel-example-1z" data-slide-to="1"></li>
     <li data-target="#carousel-example-1z" data-slide-to="2"></li>
     <li data-target="#carousel-example-1z" data-slide-to="3"></li>
@@ -19,15 +19,15 @@
           <div class="col-6">
             <div class="row">
               <div class="col-6 p-0">
-               <img class="d-block w-100" :src="posterUrl+item.movie2.poster_path" alt="movie_poster" style="height:200px;">
+               <img class="d-block w-100 biggerImg" :src="posterUrl+item.movie2.poster_path" alt="movie_poster">
               </div>
               <div class="col-6 p-0">
-                 <img class="d-block w-100" :src="posterUrl+item.movie3.poster_path" alt="movie_poster" style="height:100px;">
-                 <img class="d-block w-100" :src="posterUrl+item.movie4.poster_path" alt="movie_poster" style="height:100px;">
+                 <img class="d-block w-100 smallerImg" :src="posterUrl+item.movie3.poster_path" alt="movie_poster">
+                 <img class="d-block w-100 smallerImg" :src="posterUrl+item.movie4.poster_path" alt="movie_poster">
               </div>
             </div>
             <div class="row">
-             <img class="d-block w-100" :src="posterUrl+item.movie5.poster_path" alt="movie_poster"  style="height:200px;">
+             <img class="d-block w-100 biggerImg" :src="posterUrl+item.movie5.poster_path" alt="movie_poster">
             </div>
           </div>
         </div>
@@ -46,6 +46,7 @@
   </a> --->
   <!--/.Controls-->
 </div>
+   
 
 </template>
 
@@ -79,6 +80,24 @@ html {
     overflow-x: hidden;
 }
 .carouselImg {
-    height: 400px;
+    height: 550px;
 }
+.biggerImg {
+  height: 275px;
+}
+.smallerImg {
+  height: 137.5px;
+}
+
+ @media only screen and (max-width: 991px) {
+     .carouselImg{
+       height: 420px;
+    }
+    .biggerImg {
+      height: 210px;
+    }
+    .smallerImg {
+      height: 105px;
+    }
+  }
 </style>
