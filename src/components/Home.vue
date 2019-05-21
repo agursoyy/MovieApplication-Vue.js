@@ -34,7 +34,7 @@ export default {
 #carousel-container {
   background-repeat: none;
    position: relative;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
 }
 
 
