@@ -1,9 +1,9 @@
-<template>
+<template >
   <div id="app">
      <span class="scroll"></span>
      <Header class="sticky-top"/>
 <!-- navbar-1.vue -->
-    <router-view/>
+   <router-view/> 
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  min-height: 100%;
 }
 
 .pageHeader {
@@ -35,7 +36,6 @@ export default {
 .backgroundStyle {
   background-repeat: none;
   background-size: cover;
-  min-height: 768px;
 }
 .pagination > li > a
 {

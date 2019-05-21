@@ -1,15 +1,8 @@
 <template>
-<div class="container-fluid p-0" id="homeContainer">
   <div class="container-fluid p-0" id="carousel-container" v-bind:style="[{'background-image': 'url(' + carouselBg + ')' }]">
     <div class="container">
-      <Carousel class="pt-5" style="padding-bottom: 70px;"/>
+      <Carousel class="pt-5"/>
     </div>
-  </div>
-  <div class="container-fluid" id="genre-container" v-bind:style="[{'background-image': 'url(' + genreBg + ')' }]">
-    <div class="container pt-5 pb-5">
-      <Genres/>
-    </div>
-  </div>
 
 </div>
 
@@ -37,10 +30,11 @@ export default {
 </script>
 
 <style>
+
 #carousel-container {
   background-repeat: none;
-  background-size: 50% 50%;
-  height: 768px;
+   position: relative;
+  height: calc(100vh - 80px);
 }
 
 
