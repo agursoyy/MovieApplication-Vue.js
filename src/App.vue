@@ -34,6 +34,7 @@ export default {
   font-weight:700;
 }
 .backgroundStyle {
+  min-height: calc(100vh - 80px); /* header menu height is extracted.*/
   background-size:cover;
   background-repeat: none;
 }
@@ -46,5 +47,11 @@ export default {
   color: #fff; 
   background-color: #000000;
  
+}
+@media only screen and (max-width: 600px) {
+  .backgroundStyle {
+      min-height: calc(100vh - 55px); /* header menu height is extracted.*/
+
+  }
 }
 </style>

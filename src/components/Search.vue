@@ -12,7 +12,7 @@
     <transition name="slide">
       <router-view/>
     </transition>
-    <b-container>
+    <b-container style="border:2px solid red;">
         <h3 class="mb-4 pageHeader">Arama Sonucu</h3>
          <b-row  >
                 <b-col lg="6" class="mb-3" v-for="entry in movies.results" :key="entry.id">

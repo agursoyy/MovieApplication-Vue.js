@@ -7,7 +7,9 @@
             <i class="fa fa-times-circle-o" id="closeIcon" aria-hidden="true" @click="$emit('close')"></i>
             <b-container >
              <div class="movie-container">
-              <img :src='movieDetail.poster' class="poster-img d-none d-lg-block" alt="poster">
+               <div>
+                  <img :src='movieDetail.poster' class="poster-img d-none d-lg-block" alt="poster">
+               </div>
               <div id="text-content">
                   <div>
                     <div>
@@ -93,8 +95,8 @@ export default {
 .movie-container {
   display: flex;
   color: white;
- 
 }
+
 .poster-img {
   height: 450px;
   width: 325px;
